@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NipIt | Beat Task Paralysis with Micro-Steps</title>
+  <meta name="description" content="NipIt turns overwhelming tasks into bite-sized micro-steps. Built for neurodivergent minds, ADHD, and executive dysfunction. 100% ad-free.">
+  
+  <!-- Modern Font & Styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --border-color: #334155;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1000px;
+      padding: 2rem 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      background: var(--border-color);
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem 0 4rem;
+      text-align: center;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+    }
+
+    /* Form Card */
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2.5rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow);
+      text-align: left;
+    }
+
+    .form-card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 0.75rem;
+      flex-direction: column;
+    }
+
+    @media (min-width: 640px) {
+      .input-group {
+        flex-direction: row;
+      }
+    }
+
+    input[type="email"] {
+      flex: 1;
+      padding: 0.85rem 1.25rem;
+      border-radius: 0.5rem;
+      border: 1px solid var(--border-color);
+      background: #0f172a;
+      color: #fff;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    input[type="email"]:focus {
+      border-color: var(--accent-cyan);
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
+      color: #0f172a;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.85rem 1.75rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+
+    button[type="submit"]:hover {
+      opacity: 0.9;
+    }
+
+    /* Features Grid */
+    .features {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-top: 4rem;
+      text-align: left;
+    }
+
+    @media (min-width: 640px) {
+      .features {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    .feature-card {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+    }
+
+    .feature-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .feature-card p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">NipIt ✂️</div>
+    <div class="badge">Closed Beta Live</div>
+  </header>
+
+  <main>
+    <h1 class="hero-title">Turn Task Paralysis into <span>Bite-Sized Action</span></h1>
+    <p class="hero-subtitle">NipIt takes your overwhelming chores, emails, and projects and generates instant, low-friction micro-steps. Built by a neurodivergent mind, for neurodivergent minds.</p>
+
+    <!-- Beta Sign Up Form -->
+    <div class="form-card">
+      <h2>Join the Closed Beta</h2>
+      <p>Enter the Gmail address associated with your Google Play Account to receive an invite to testing.</p>
+
+      <!-- Replace YOUR_FORMSPREE_ID with your Formspree endpoint or backend URL -->
+      <form action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="input-group">
+        <input type="email" name="email" placeholder="Enter your Google Play email" required>
+        <button type="submit">Request Beta Access</button>
+      </form>
+    </div>
+
+    <!-- Feature Pillars -->
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">🧩</div>
+        <h3>Micro-Step AI</h3>
+        <p>Shrinks the activation energy needed to start. Get moving with tiny wins.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚫</div>
+        <h3>100% Ad-Free</h3>
+        <p>Zero pop-ups, zero tracking, and zero sensory clutter. Just pure focus.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📝</div>
+        <h3>Task History & Notes</h3>
+        <p>Keep track of previous task runs without cluttering your main view.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 NipIt App. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
