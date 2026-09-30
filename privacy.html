@@ -50,14 +50,28 @@
       align-items: center;
     }
 
+    /* Logo Layout with Image */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+    }
+
+    .logo-img {
+      height: 42px;
+      width: auto;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
     .logo {
-      font-size: 1.75rem;
+      font-size: 2.45rem;
       font-weight: 800;
       background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       letter-spacing: -0.02em;
-      text-decoration: none;
     }
 
     .back-link {
@@ -174,7 +188,10 @@
 <body>
 
   <header>
-    <a href="index.html" class="logo">NipIt ✂️</a>
+    <a href="index.html" class="logo-wrapper">
+      <img src="NipIt_Logo_nobg.png" alt="NipIt Logo" class="logo-img">
+      <span class="logo">NipIt</span>
+    </a>
     <a href="index.html" class="back-link">&larr; Back to Home</a>
   </header>
 
@@ -186,7 +203,7 @@
       <p>This Privacy Policy describes how <strong>Mariah Taylor O/A By Miraxx</strong> ("we", "us", or "our") collects, uses, stores, and protects your personal information when you visit our website or submit your email address for the closed beta testing of the <strong>NipIt</strong> mobile application.</p>
 
       <div class="highlight-box">
-        <p>🛡️ Strict Privacy Promise: We do not sell, rent, trade, or monetize your personal information under any circumstances. Your email is collected solely to grant you access to the NipIt closed beta and communicate essential product updates.</p>
+        <p>🛡️️ Strict Privacy Promise: We do not sell, rent, trade, or monetize your personal information under any circumstances. Your email is collected solely to grant you access to the NipIt closed beta and communicate essential product updates.</p>
       </div>
 
       <h2>1. Information We Collect</h2>
