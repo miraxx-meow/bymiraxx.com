@@ -118,6 +118,20 @@
       align-items: center;
     }
 
+    /* Logo Layout with Image */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-img {
+      height: 36px;
+      width: auto;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
     .logo {
       font-size: 1.75rem;
       font-weight: 800;
@@ -308,7 +322,10 @@
 <body>
 
   <header>
-    <div class="logo">NipIt ✂️</div>
+    <div class="logo-wrapper">
+      <img src="NipIt Logo.jpg" alt="NipIt Logo" class="logo-img">
+      <span class="logo">NipIt</span>
+    </div>
     <div class="badge">Closed Beta Live</div>
   </header>
 
