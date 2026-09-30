@@ -230,6 +230,24 @@
       opacity: 0.9;
     }
 
+    /* Micro Privacy Notice below form */
+    .form-privacy-note {
+      font-size: 0.8rem !important;
+      color: var(--text-muted) !important;
+      margin-top: 0.85rem !important;
+      margin-bottom: 0 !important;
+    }
+
+    .form-privacy-note a {
+      color: var(--accent-cyan);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .form-privacy-note a:hover {
+      opacity: 0.8;
+    }
+
     /* Features Grid */
     .features {
       display: grid;
@@ -307,6 +325,11 @@
         <input type="email" name="email" placeholder="Enter your Google Play email" required>
         <button type="submit" id="submit-btn">Request Beta Access</button>
       </form>
+
+      <!-- Micro Privacy Notice -->
+      <p class="form-privacy-note">
+        🔒 Used strictly for beta access. Zero ads, zero spam. See our <a href="privacy.html">Privacy Policy</a> for details.
+      </p>
     </div>
 
     <!-- Feature Pillars -->
@@ -328,10 +351,11 @@
       </div>
     </div>
   </main>
+
   <footer>
-  <p>Have questions or feedback? Contact us at <a href="mailto:your-email@bymiraxx.com">your-email@bymiraxx.com</a></p>
-  <p style="margin-top: 0.5rem;">&copy; 2026 Mariah Taylor O/A By Miraxx. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
-</footer>
+    <p>Have questions or feedback? Contact us at <a href="mailto:your-email@bymiraxx.com">your-email@bymiraxx.com</a></p>
+    <p style="margin-top: 0.5rem;">&copy; 2026 Mariah Taylor O/A By Miraxx. All rights reserved. | <a href="privacy.html">Privacy Policy</a></p>
+  </footer>
 
   <!-- Success Pop-Up Modal -->
   <div id="success-modal" class="modal-overlay">
