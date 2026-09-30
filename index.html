@@ -112,10 +112,17 @@
     header {
       width: 100%;
       max-width: 1000px;
-      padding: 2rem 0;
+      padding: 1.75rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: relative;
+    }
+
+    .header-left {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
     }
 
     /* Logo Layout with Image */
@@ -123,6 +130,7 @@
       display: flex;
       align-items: center;
       gap: 0.7rem;
+      text-decoration: none;
     }
 
     .logo-img {
@@ -149,6 +157,91 @@
       padding: 0.35rem 0.8rem;
       border-radius: 999px;
       border: 1px solid rgba(56, 189, 248, 0.3);
+      white-space: nowrap;
+    }
+
+    /* Navigation Styling */
+    .desktop-nav {
+      display: none;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .desktop-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      color: var(--accent-cyan);
+    }
+
+    .hamburger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 0.65rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .hamburger-btn .bar {
+      width: 20px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .mobile-nav {
+      display: none;
+      width: 100%;
+      max-width: 1000px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+    }
+
+    @media (min-width: 640px) {
+      .desktop-nav {
+        display: flex;
+      }
+      .hamburger-btn {
+        display: none;
+      }
+      .mobile-nav {
+        display: none !important;
+      }
     }
 
     main {
@@ -305,6 +398,9 @@
       color: var(--text-muted);
       font-size: 0.85rem;
       text-align: center;
+      width: 100%;
+      max-width: 1000px;
+      border-top: 1px solid var(--border-color);
     }
 
     footer a {
@@ -322,12 +418,37 @@
 <body>
 
   <header>
-    <div class="logo-wrapper">
-      <img src="NipIt_Logo_nobg.png" alt="NipIt Logo" class="logo-img">
-      <span class="logo">NipIt</span>
+    <div class="header-left">
+      <a href="index.html" class="logo-wrapper">
+        <img src="NipIt_Logo_nobg.png" alt="NipIt Logo" class="logo-img">
+        <span class="logo">NipIt</span>
+      </a>
+      <div class="badge">Closed Beta Live</div>
     </div>
-    <div class="badge">Closed Beta Live</div>
+
+    <!-- Desktop Top Nav -->
+    <nav class="desktop-nav">
+      <a href="index.html" class="active">Home</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
+
+  <!-- Mobile Dropdown Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="active">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </nav>
 
   <main>
     <h1 class="hero-title">Turn Task Paralysis into <span>Bite-Sized Action</span></h1>
@@ -385,13 +506,22 @@
   </div>
 
   <script>
+    // Hamburger Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    // Form & Modal Logic
     const form = document.getElementById('beta-form');
     const modal = document.getElementById('success-modal');
     const closeModalBtn = document.getElementById('close-modal-btn');
     const submitBtn = document.getElementById('submit-btn');
 
     form.addEventListener('submit', async function(e) {
-      e.preventDefault(); // Prevent standard page redirect
+      e.preventDefault();
       
       submitBtn.disabled = true;
       submitBtn.innerText = 'Submitting...';
@@ -409,7 +539,7 @@
 
         if (response.ok) {
           form.reset();
-          modal.classList.add('active'); // Show modal
+          modal.classList.add('active');
         } else {
           alert("Oops! There was a problem submitting your form.");
         }
@@ -422,7 +552,7 @@
     });
 
     closeModalBtn.addEventListener('click', function() {
-      modal.classList.remove('active'); // Hide modal
+      modal.classList.remove('active');
     });
   </script>
 </body>
