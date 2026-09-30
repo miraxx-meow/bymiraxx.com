@@ -6,7 +6,6 @@
   <title>Terms of Service | NipIt</title>
   <meta name="description" content="Terms of Service for the NipIt closed beta testing program by Mariah Taylor O/A By Miraxx.">
   
-  <!-- Modern Font & Styling -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -43,14 +42,13 @@
 
     header {
       width: 100%;
-      max-width: 900px;
-      padding: 2rem 0;
+      max-width: 1000px;
+      padding: 1.75rem 0;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    /* Logo Layout with Image */
     .logo-wrapper {
       display: flex;
       align-items: center;
@@ -74,17 +72,80 @@
       letter-spacing: -0.02em;
     }
 
-    .back-link {
-      color: var(--accent-cyan);
-      text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: opacity 0.2s;
+    .desktop-nav {
+      display: none;
+      gap: 1.5rem;
+      align-items: center;
     }
 
-    .back-link:hover {
-      opacity: 0.8;
-      text-decoration: underline;
+    .desktop-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      color: var(--accent-cyan);
+    }
+
+    .hamburger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
+      border: 1px solid var(--border-color);
+      padding: 0.5rem 0.65rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+
+    .hamburger-btn .bar {
+      width: 20px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+    }
+
+    .mobile-nav {
+      display: none;
+      width: 100%;
+      max-width: 1000px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+      margin-bottom: 1.5rem;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+    }
+
+    @media (min-width: 640px) {
+      .desktop-nav { display: flex; }
+      .hamburger-btn { display: none; }
+      .mobile-nav { display: none !important; }
     }
 
     main {
@@ -141,9 +202,7 @@
       font-size: 0.98rem;
     }
 
-    li {
-      margin-bottom: 0.5rem;
-    }
+    li { margin-bottom: 0.5rem; }
 
     .highlight-box {
       background: rgba(56, 189, 248, 0.08);
@@ -175,13 +234,8 @@
     }
 
     @media (max-width: 640px) {
-      .policy-card {
-        padding: 1.5rem;
-      }
-
-      h1 {
-        font-size: 1.75rem;
-      }
+      .policy-card { padding: 1.5rem; }
+      h1 { font-size: 1.75rem; }
     }
   </style>
 </head>
@@ -192,8 +246,27 @@
       <img src="NipIt_Logo_nobg.png" alt="NipIt Logo" class="logo-img">
       <span class="logo">NipIt</span>
     </a>
-    <a href="index.html" class="back-link">&larr; Back to Home</a>
+
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html" class="active">Terms</a>
+    </nav>
+
+    <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
+
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html" class="active">Terms of Service</a>
+  </nav>
 
   <main>
     <div class="policy-card">
@@ -244,9 +317,17 @@
     </div>
   </main>
 
-<footer>
-  <p>&copy; 2026 Mariah Taylor O/A By Miraxx. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
-</footer>
+  <footer>
+    <p>&copy; 2026 Mariah Taylor O/A By Miraxx. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+  </footer>
 
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
