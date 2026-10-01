@@ -178,9 +178,8 @@
 
     main {
       width: 100%;
-      max-width: 800px;
+      max-width: 680px;
       margin: 2rem 0 4rem;
-      text-align: center;
     }
 
     /* Content Card */
@@ -188,14 +187,15 @@
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 1rem;
-      padding: 2.5rem 1.5rem;
+      padding: 2.5rem 2rem;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow);
-      text-align: center;
+      text-align: left;
     }
 
     .form-card h1 {
       font-size: 2rem;
       margin-bottom: 0.5rem;
+      text-align: center;
     }
 
     .form-card h1 span {
@@ -204,31 +204,193 @@
       -webkit-text-fill-color: transparent;
     }
 
-    .form-card p {
+    .form-card p.subtitle {
       color: var(--text-muted);
       font-size: 1rem;
       margin-bottom: 2rem;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
+      text-align: center;
     }
 
-    /* Embedded Google Form Container */
-    .form-wrapper {
+    /* Custom Theme Form Styles */
+    .snapit-form {
       display: flex;
-      justify-content: center;
-      width: 100%;
-      border-radius: 0.75rem;
-      overflow: hidden;
+      flex-direction: column;
+      gap: 1.25rem;
     }
 
-    iframe {
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="email"],
+    .form-group select,
+    .form-group textarea {
       width: 100%;
-      max-width: 640px;
-      height: 850px;
+      padding: 0.85rem 1rem;
+      background-color: var(--bg-dark);
+      border: 1px solid var(--border-color);
+      border-radius: 0.5rem;
+      color: var(--text-main);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text-muted);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
+    }
+
+    .form-group select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      padding-right: 2.5rem;
+    }
+
+    .form-group select option {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+    }
+
+    .form-group textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    .form-group input[type="file"] {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input[type="file"]::file-selector-button {
+      background: var(--border-color);
+      color: var(--text-main);
       border: none;
-      border-radius: 0.75rem;
-      background: transparent;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      cursor: pointer;
+      font-weight: 600;
+      margin-right: 0.75rem;
+      transition: background 0.2s ease;
+    }
+
+    .form-group input[type="file"]::file-selector-button:hover {
+      background: rgba(56, 189, 248, 0.2);
+      color: var(--accent-cyan);
+    }
+
+    .btn-primary {
+      width: 100%;
+      padding: 0.9rem;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      color: #000;
+      font-weight: 700;
+      font-size: 1rem;
+      border: none;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease, transform 0.1s ease;
+      margin-top: 0.5rem;
+    }
+
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.99);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    /* Passcode Gate Area */
+    #passcode-gate {
+      text-align: center;
+    }
+
+    .passcode-box {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 480px) {
+      .passcode-box {
+        flex-direction: column;
+      }
+    }
+
+    #passcode-error {
+      color: #f87171;
+      font-size: 0.85rem;
+      margin-top: 0.75rem;
+      display: none;
+    }
+
+    /* Success Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      z-index: 100;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2.5rem 2rem;
+      max-width: 420px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .modal-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      margin-bottom: 1.5rem;
     }
 
     footer {
@@ -294,14 +456,71 @@
   <main>
     <div class="form-card">
       <h1>Tester <span>Feedback</span></h1>
-      <p>We'd love to hear your thoughts as you explore NipIt! Whether it's positive, negative, or neutral, every bit of feedback helps us improve.</p>
+      <p class="subtitle">We'd love to hear your thoughts as you explore NipIt! Whether it's positive, negative, or neutral, every bit of feedback helps us improve.</p>
 
-      <div class="form-wrapper">
-        <!-- Paste your copied Google Form embed iframe URL below -->
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeCCarjynrtR7Sx-sh036itGn4cVe_Foh4d_KQDI8CTFLLNWQ/viewform?embedded=true" width="640" height="443" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+      <!-- Step 1: Cloudflare Passcode Gate -->
+      <div id="passcode-gate">
+        <div class="form-group">
+          <label for="passcode-input">Enter Beta Passcode</label>
+          <div class="passcode-box">
+            <input type="text" id="passcode-input" placeholder="e.g. BETA123" required>
+            <button type="button" id="verify-passcode-btn" class="btn-primary" style="width: auto; padding: 0.85rem 1.5rem; margin-top: 0;">Verify Code</button>
+          </div>
+        </div>
+        <p id="passcode-error">❌ Invalid passcode. Please check your beta invite email.</p>
       </div>
+
+      <!-- Step 2: Custom SnapItForms Feedback Form (Hidden until verified) -->
+      <form id="snapitForm" class="snapit-form" action="https://api.snapitforms.com/submit" method="POST" style="display: none;">
+        <!-- SnapItForms Key -->
+        <input type="hidden" name="access_key" value="sf_79aa54f034c4ce2927393d89563f34aa">
+
+        <!-- Honeypot Anti-Spam Field -->
+        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
+        <div class="form-group">
+          <label for="customer_name">Your Name (Optional)</label>
+          <input type="text" name="customer_name" id="customer_name" placeholder="Enter your name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address (Optional)</label>
+          <input type="email" name="email" id="email" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+          <label for="category">Feedback Category *</label>
+          <select name="category" id="category" required>
+            <option value="">Choose an option</option>
+            <option value="Feature Request">Feature Request</option>
+            <option value="Bug Report">Bug Report</option>
+            <option value="Other">Other</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Detailed Description *</label>
+          <textarea name="description" id="description" placeholder="Please provide a detailed description of your issue..." required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="attachment">Attachment (Optional)</label>
+          <input type="file" name="attachment" id="attachment">
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn-primary">Submit Ticket</button>
+      </form>
     </div>
   </main>
+
+  <!-- Submission Success Modal -->
+  <div class="modal-overlay" id="success-modal">
+    <div class="modal-card">
+      <h3>🎉 Feedback Submitted!</h3>
+      <p>Thank you for helping us make NipIt better. We've received your feedback!</p>
+      <button type="button" class="btn-primary" onclick="document.getElementById('success-modal').classList.remove('active')">Close</button>
+    </div>
+  </div>
 
   <footer>
     <p>Have questions or feedback? Contact us at <a href="mailto:mariah@bymiraxx.com">Mariah@bymiraxx.com</a></p>
@@ -315,6 +534,91 @@
 
     menuToggle.addEventListener('click', () => {
       mobileNav.classList.toggle('open');
+    });
+
+    // Cloudflare Passcode Worker Integration
+    const WORKER_VERIFY_URL = "https://nipit-passcode-verify.nipit-app.workers.dev/";
+
+    const passcodeGate = document.getElementById('passcode-gate');
+    const passcodeInput = document.getElementById('passcode-input');
+    const verifyBtn = document.getElementById('verify-passcode-btn');
+    const passcodeError = document.getElementById('passcode-error');
+    const snapitForm = document.getElementById('snapitForm');
+
+    // Verification Logic
+    verifyBtn.addEventListener('click', async function() {
+      const enteredCode = passcodeInput.value.trim();
+
+      if (!enteredCode) return;
+
+      verifyBtn.disabled = true;
+      verifyBtn.innerText = 'Verifying...';
+      passcodeError.style.display = 'none';
+
+      try {
+        const response = await fetch(WORKER_VERIFY_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ code: enteredCode })
+        });
+
+        const result = await response.json();
+
+        if (result.valid) {
+          passcodeGate.style.display = 'none';
+          snapitForm.style.display = 'flex'; // Reveals the styled feedback form
+        } else {
+          passcodeError.style.display = 'block';
+        }
+      } catch (error) {
+        alert("Unable to verify passcode right now. Please try again.");
+      } finally {
+        verifyBtn.disabled = false;
+        verifyBtn.innerText = 'Verify Code';
+      }
+    });
+
+    // Allow pressing "Enter" in passcode input to trigger verification
+    passcodeInput.addEventListener('keypress', function(e) {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        verifyBtn.click();
+      }
+    });
+
+    // Handle SnapItForms Submission via fetch
+    snapitForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const submitBtn = document.getElementById('submit-btn');
+      submitBtn.disabled = true;
+      submitBtn.innerText = 'Submitting Ticket...';
+
+      const data = new FormData(snapitForm);
+
+      try {
+        const response = await fetch(snapitForm.action, {
+          method: snapitForm.method,
+          body: data,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+
+        if (response.ok) {
+          snapitForm.reset();
+          document.getElementById('success-modal').classList.add('active');
+        } else {
+          alert("Oops! There was a problem submitting your ticket.");
+        }
+      } catch (error) {
+        alert("Oops! Network error, please try again.");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerText = 'Submit Ticket';
+      }
     });
   </script>
 </body>
