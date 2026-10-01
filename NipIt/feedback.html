@@ -594,7 +594,7 @@
 
       const submitBtn = document.getElementById('submit-btn');
       submitBtn.disabled = true;
-      submitBtn.innerText = 'Submitting Ticket...';
+      submitBtn.innerText = 'Submitting feedback...';
 
       const data = new FormData(snapitForm);
 
@@ -611,13 +611,13 @@
           snapitForm.reset();
           document.getElementById('success-modal').classList.add('active');
         } else {
-          alert("Oops! There was a problem submitting your ticket.");
+          alert("Oops! There was a problem submitting your feedback.");
         }
       } catch (error) {
         alert("Oops! Network error, please try again.");
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerText = 'Submit Ticket';
+        submitBtn.innerText = 'Submit Feedback';
       }
     });
   </script>
