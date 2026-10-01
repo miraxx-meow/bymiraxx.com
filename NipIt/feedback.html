@@ -3,112 +3,222 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NipIt - Tester Feedback</title>
+  <title>NipIt | Tester Feedback</title>
+  <meta name="description" content="Submit feedback for NipIt closed beta.">
+  
+  <!-- Modern Font & Styling -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-color: #f9f9fb;
-      --card-bg: #ffffff;
-      --text-color: #2d3748;
-      --accent-color: #4a5568;
-      --border-color: #e2e8f0;
+      --bg-dark: #0f172a;
+      --card-bg: #1e293b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-cyan: #38bdf8;
+      --accent-purple: #c084fc;
+      --accent-glow: rgba(56, 189, 248, 0.15);
+      --border-color: #334155;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
+      background-color: var(--bg-dark);
+      color: var(--text-main);
       line-height: 1.6;
+      padding: 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
     }
 
-    /* Header & Navigation Styling */
     header {
-      background-color: var(--card-bg);
-      border-bottom: 1px solid var(--border-color);
-      padding: 1rem 1.5rem;
+      width: 100%;
+      max-width: 1000px;
+      padding: 1.75rem 0;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      align-items: center;
+      position: relative;
     }
 
-    .logo-container {
+    .header-left {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
-      text-decoration: none;
-      color: inherit;
-    }
-
-    .logo-container img {
-      height: 40px;
-      width: auto;
-      border-radius: 8px;
-    }
-
-    .logo-text {
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-    }
-
-    nav ul {
-      display: flex;
-      list-style: none;
       gap: 1.25rem;
     }
 
-    nav a {
+    /* Logo Layout */
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
       text-decoration: none;
-      color: var(--text-color);
-      font-weight: 500;
+    }
+
+    .logo-img {
+      height: 42px;
+      width: auto;
+      border-radius: 6px;
+      object-fit: contain;
+    }
+
+    .logo {
+      font-size: 2.45rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .badge {
+      background: var(--border-color);
+      color: var(--accent-cyan);
+      font-size: 0.85rem;
+      font-weight: 600;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      white-space: nowrap;
+    }
+
+    /* Navigation Styling */
+    .desktop-nav {
+      display: none;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .desktop-nav a {
+      color: var(--text-muted);
+      text-decoration: none;
       font-size: 0.95rem;
+      font-weight: 600;
       transition: color 0.2s ease;
     }
 
-    nav a:hover {
-      color: var(--accent-color);
+    .desktop-nav a:hover,
+    .desktop-nav a.active {
+      color: var(--accent-cyan);
     }
 
-    /* Page Layout Container */
-    main {
-      max-width: 800px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-
-    .content-card {
-      background-color: var(--card-bg);
-      border-radius: 12px;
+    .hamburger-btn {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      background: transparent;
       border: 1px solid var(--border-color);
-      padding: 2rem;
-      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      padding: 0.5rem 0.65rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
     }
 
-    .page-title {
-      font-size: 1.75rem;
-      margin-bottom: 0.5rem;
-      text-align: center;
+    .hamburger-btn .bar {
+      width: 20px;
+      height: 2px;
+      background-color: var(--text-main);
+      border-radius: 2px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
-    .page-description {
-      text-align: center;
-      color: #64748b;
+    .mobile-nav {
+      display: none;
+      width: 100%;
+      max-width: 1000px;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 0.75rem;
+      padding: 0.75rem;
       margin-bottom: 1.5rem;
+      flex-direction: column;
+      gap: 0.25rem;
     }
 
-    /* Embedded Form Container */
+    .mobile-nav.open {
+      display: flex;
+    }
+
+    .mobile-nav a {
+      color: var(--text-main);
+      text-decoration: none;
+      padding: 0.75rem 1rem;
+      font-weight: 600;
+      border-radius: 0.5rem;
+      font-size: 0.95rem;
+    }
+
+    .mobile-nav a:hover,
+    .mobile-nav a.active {
+      background: rgba(56, 189, 248, 0.1);
+      color: var(--accent-cyan);
+    }
+
+    @media (min-width: 640px) {
+      .desktop-nav {
+        display: flex;
+      }
+      .hamburger-btn {
+        display: none;
+      }
+      .mobile-nav {
+        display: none !important;
+      }
+    }
+
+    main {
+      width: 100%;
+      max-width: 800px;
+      margin: 2rem 0 4rem;
+      text-align: center;
+    }
+
+    /* Content Card */
+    .form-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 1rem;
+      padding: 2.5rem 1.5rem;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow);
+      text-align: center;
+    }
+
+    .form-card h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-card h1 span {
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .form-card p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Embedded Google Form Container */
     .form-wrapper {
       display: flex;
       justify-content: center;
       width: 100%;
+      border-radius: 0.75rem;
       overflow: hidden;
     }
 
@@ -116,49 +226,96 @@
       width: 100%;
       max-width: 640px;
       height: 850px;
-      border: 0;
+      border: none;
+      border-radius: 0.75rem;
+      background: transparent;
     }
 
-    @media (max-width: 600px) {
-      header {
-        padding: 0.75rem 1rem;
-      }
-      .content-card {
-        padding: 1rem;
-      }
+    footer {
+      margin-top: auto;
+      padding: 2rem 0;
+      color: var(--text-muted);
+      font-size: 0.85rem;
+      text-align: center;
+      width: 100%;
+      max-width: 1000px;
+      border-top: 1px solid var(--border-color);
+    }
+
+    footer a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    footer a:hover {
+      opacity: 0.8;
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
-  <!-- Navigation Header -->
   <header>
-    <a href="index.html" class="logo-container">
-      <img src="NipIt_Logo_nobg.png" alt="NipIt Logo">
-      <span class="logo-text">NipIt</span>
-    </a>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="feedback.html">Feedback</a></li>
-      </ul>
+    <div class="header-left">
+      <a href="index.html" class="logo-wrapper">
+        <img src="NipIt_Logo_nobg.png" alt="NipIt Logo" class="logo-img">
+        <span class="logo">NipIt</span>
+      </a>
+      <div class="badge">Closed Beta Live</div>
+    </div>
+
+    <!-- Desktop Top Nav -->
+    <nav class="desktop-nav">
+      <a href="index.html">Home</a>
+      <a href="feedback.html" class="active">Feedback</a>
+      <a href="faq.html">FAQ</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
     </nav>
+
+    <!-- Mobile Hamburger Button -->
+    <button class="hamburger-btn" id="menuToggle" aria-label="Toggle navigation">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
   </header>
 
-  <!-- Main Content -->
+  <!-- Mobile Dropdown Nav -->
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="index.html">Home</a>
+    <a href="feedback.html" class="active">Feedback</a>
+    <a href="faq.html">FAQ</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </nav>
+
   <main>
-    <div class="content-card">
-      <h1 class="page-title">Tester Feedback</h1>
-      <p class="page-description">
-        We'd love to hear your thoughts as you explore NipIt! Whether it's positive, negative, or neutral, every bit of feedback helps us improve.
-      </p>
+    <div class="form-card">
+      <h1>Tester <span>Feedback</span></h1>
+      <p>We'd love to hear your thoughts as you explore NipIt! Whether it's positive, negative, or neutral, every bit of feedback helps us improve.</p>
 
       <div class="form-wrapper">
-        <!-- Replace the src URL below with your copied Google Form embed link -->
-        <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSeCCarjynrtR7Sx-sh036itGn4cVe_Foh4d_KQDI8CTFLLNWQ/viewform?embedded=true" width="640" height="579" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        <!-- Paste your copied Google Form embed iframe URL below -->
+        <iframe src="https://docs.google.com/forms/d/e/YOUR_FORM_ID/viewform?embedded=true" marginheight="0" marginwidth="0">Loading…</iframe>
       </div>
     </div>
   </main>
 
+  <footer>
+    <p>Have questions or feedback? Contact us at <a href="mailto:your-email@bymiraxx.com">your-email@bymiraxx.com</a></p>
+    <p>&copy; 2026 Mariah Taylor O/A By Miraxx. All rights reserved. | <a href="feedback.html">Feedback</a> | <a href="faq.html">FAQ</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    // Hamburger Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+  </script>
 </body>
 </html>
