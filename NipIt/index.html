@@ -461,13 +461,16 @@
       <h2>Join the Closed Beta</h2>
       <p>Enter the Gmail address associated with your Google Play Account to receive an invite to testing.</p>
 
-      <form id="beta-form" action="https://snapitforms.com/f/sf_79aa54f034c4ce2927393d89563f34aa" method="POST" class="input-group">
-        <!-- Hidden Honeypot Bot Protection -->
-        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-        
-        <input type="email" name="email" placeholder="Enter your Google Play email" required>
-        <button type="submit" id="submit-btn">Request Beta Access</button>
-      </form>
+      <form id="beta-form" action="https://api.snapitforms.com/submit" method="POST" class="input-group">
+  <!-- SnapItForms Access Key -->
+  <input type="hidden" name="access_key" value="sf_79aa54f034c4ce2927393d89563f34aa">
+
+  <!-- Honeypot Bot Protection -->
+  <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
+
+  <input type="email" name="email" placeholder="Enter your Google Play email" required>
+  <button type="submit" id="submit-btn">Request Beta Access</button>
+</form>
 
       <!-- Micro Privacy Notice -->
       <p class="form-privacy-note">
