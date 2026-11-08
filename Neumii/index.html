@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Neumii | Beat Task Paralysis with Micro-Steps</title>
-  <meta name="description" content="Neumii turns overwhelming tasks into bite-sized micro-steps. Built for neurodivergent minds, ADHD, and executive dysfunction. 100% ad-free.">
+  <title>Neumii | ADHD Burnout Toolkit & Task Paralysis Relief</title>
+  <meta name="description" content="Break through task paralysis and executive dysfunction with Neumii: ADHD Burnout Toolkit. The gentle, zero-guilt task planner built for neurodivergent minds.">
 
   <!-- Favicon Assets -->
   <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
@@ -35,74 +35,6 @@
       margin: 0;
       padding: 0;
       font-family: 'Inter', system-ui, -apple-system, sans-serif;
-    }
-
-    /* Pop-Up Modal Styles */
-    .modal-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(4px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.3s ease, visibility 0.3s ease;
-      z-index: 1000;
-    }
-
-    .modal-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .modal-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 1rem;
-      padding: 2.5rem;
-      max-width: 420px;
-      width: 90%;
-      text-align: center;
-      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 0 40px var(--accent-glow);
-      transform: translateY(20px);
-      transition: transform 0.3s ease;
-    }
-
-    .modal-overlay.active .modal-card {
-      transform: translateY(0);
-    }
-
-    .modal-icon {
-      font-size: 3rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .modal-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    #close-modal-btn {
-      background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
-      color: #0f172a;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      border-radius: 0.5rem;
-      cursor: pointer;
-      width: 100%;
     }
 
     body {
@@ -279,87 +211,46 @@
       margin: 0 auto 2.5rem;
     }
 
-    /* Form Card */
-    .form-card {
+    /* Action Card */
+    .cta-card {
       background: var(--card-bg);
       border: 1px solid var(--border-color);
       border-radius: 1rem;
-      padding: 2.5rem;
+      padding: 3rem 2.5rem;
       box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 0 40px var(--accent-glow);
-      text-align: left;
+      text-align: center;
     }
 
-    .form-card h2 {
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
+    .cta-card h2 {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
     }
 
-    .form-card p {
+    .cta-card p {
       color: var(--text-muted);
-      font-size: 0.95rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .input-group {
-      display: flex;
-      gap: 0.75rem;
-      flex-direction: column;
-    }
-
-    @media (min-width: 640px) {
-      .input-group {
-        flex-direction: row;
-      }
-    }
-
-    input[type="email"] {
-      flex: 1;
-      padding: 0.85rem 1.25rem;
-      border-radius: 0.5rem;
-      border: 1px solid var(--border-color);
-      background: #0f172a;
-      color: #fff;
       font-size: 1rem;
-      outline: none;
-      transition: border-color 0.2s;
+      margin-bottom: 2rem;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
-    input[type="email"]:focus {
-      border-color: var(--accent-cyan);
-    }
-
-    button[type="submit"] {
+    .store-btn {
+      display: inline-block;
       background: linear-gradient(135deg, var(--accent-cyan), #0284c7);
       color: #0f172a;
       font-weight: 700;
-      font-size: 1rem;
-      padding: 0.85rem 1.75rem;
-      border: none;
+      font-size: 1.1rem;
+      padding: 1rem 2.5rem;
       border-radius: 0.5rem;
-      cursor: pointer;
-      transition: opacity 0.2s;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.1s;
+      box-shadow: 0 4px 14px rgba(56, 189, 248, 0.3);
     }
 
-    button[type="submit"]:hover {
+    .store-btn:hover {
       opacity: 0.9;
-    }
-
-    /* Micro Privacy Notice below form */
-    .form-privacy-note {
-      font-size: 0.8rem !important;
-      color: var(--text-muted) !important;
-      margin-top: 0.85rem !important;
-      margin-bottom: 0 !important;
-    }
-
-    .form-privacy-note a {
-      color: var(--accent-cyan);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    .form-privacy-note a:hover {
-      opacity: 0.8;
+      transform: translateY(-1px);
     }
 
     /* Features Grid */
@@ -430,7 +321,7 @@
         <img src="Neumii_Logo_nobg.png" alt="Neumii Logo" class="logo-img">
         <span class="logo">Neumii</span>
       </a>
-      <div class="badge">Closed Beta Live</div>
+      <div class="badge">Open Beta Live</div>
     </div>
 
     <!-- Desktop Top Nav -->
@@ -460,47 +351,36 @@
   </nav>
 
   <main>
-    <h1 class="hero-title">Turn Task Paralysis into <span>Bite-Sized Action</span></h1>
-    <p class="hero-subtitle">Neumii takes your overwhelming chores, emails, and projects and generates instant, low-friction micro-steps. Built by a neurodivergent mind, for neurodivergent minds.</p>
+    <h1 class="hero-title">Neumii: ADHD Burnout <span>Toolkit</span></h1>
+    <p class="hero-subtitle">Break through task paralysis and executive dysfunction with the gentle, zero-guilt task planner built specifically for neurodivergent minds.</p>
 
-    <!-- Beta Sign Up Form -->
-    <div class="form-card">
-      <h2>Join the Closed Beta</h2>
-      <p>Enter the Gmail address associated with your Google Play Account to receive an invite to testing.</p>
-
-      <form id="beta-form" action="https://api.snapitforms.com/submit" method="POST" class="input-group">
-        <!-- SnapItForms Access Key -->
-        <input type="hidden" name="access_key" value="sf_79aa54f034c4ce2927393d89563f34aa">
-        <input type="hidden" name="_form_name" value="Beta Signup">
-        <!-- Honeypot Bot Protection -->
-        <input type="text" name="_gotcha" style="display:none !important" tabindex="-1" autocomplete="off">
-
-        <input type="email" name="email" placeholder="Enter your Google Play email" required>
-        <button type="submit" id="submit-btn">Request Beta Access</button>
-      </form>
-
-      <!-- Micro Privacy Notice -->
-      <p class="form-privacy-note">
-        🔒 Used strictly for beta access. Zero ads, zero spam. See our <a href="privacy.html">Privacy Policy</a> for details.
-      </p>
+    <!-- Direct Play Store Download Card -->
+    <div class="cta-card">
+      <h2>Now Available in Open Beta</h2>
+      <p>Download Neumii directly on Google Play and start turning overwhelming goals into calm, manageable micro-steps.</p>
+      
+      <!-- Replace the href below with your actual Google Play Console store listing URL -->
+      <a href="https://play.google.com/store/apps/details?id=com.bymiraxx.neumii" class="store-btn" target="_blank" rel="noopener noreferrer">
+        Get it on Google Play
+      </a>
     </div>
 
     <!-- Feature Pillars -->
     <div class="features">
       <div class="feature-card">
         <div class="feature-icon">🧩</div>
-        <h3>Micro-Step AI</h3>
-        <p>Shrinks the activation energy needed to start. Get moving with tiny wins.</p>
+        <h3>Instant Task Breakdowns</h3>
+        <p>Shrinks activation energy by instantly turning daunting chores into tiny, manageable steps.</p>
       </div>
       <div class="feature-card">
         <div class="feature-icon">🚫</div>
-        <h3>100% Ad-Free</h3>
-        <p>Zero pop-ups, zero tracking, and zero sensory clutter. Just pure focus.</p>
+        <h3>Zero Guilt</h3>
+        <p>No red warning banners, failing streaks, or aggressive notifications. Progress on your terms.</p>
       </div>
       <div class="feature-card">
-        <div class="feature-icon">📝</div>
-        <h3>Task History & Notes</h3>
-        <p>Keep track of previous task runs without cluttering your main view.</p>
+        <div class="feature-icon">🌿</div>
+        <h3>Calm & Sensory Focus</h3>
+        <p>Built-in box breathing and low-friction tools to navigate everyday overwhelm and burnout.</p>
       </div>
     </div>
   </main>
@@ -510,16 +390,6 @@
     <p>&copy; 2026 Mariah Taylor O/A By Miraxx. All rights reserved. | <a href="feedback.html">Feedback</a> | <a href="faq.html">FAQ</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
   </footer>
 
-  <!-- Success Pop-Up Modal -->
-  <div id="success-modal" class="modal-overlay">
-    <div class="modal-card">
-      <div class="modal-icon">🎉</div>
-      <h3>Thanks for your submission!</h3>
-      <p>Check your emails regularly for updates and your Google Play closed beta invite.</p>
-      <button id="close-modal-btn">Got it!</button>
-    </div>
-  </div>
-
   <script>
     // Hamburger Menu Toggle
     const menuToggle = document.getElementById('menuToggle');
@@ -527,47 +397,6 @@
 
     menuToggle.addEventListener('click', () => {
       mobileNav.classList.toggle('open');
-    });
-
-    // Form & Modal Logic
-    const form = document.getElementById('beta-form');
-    const modal = document.getElementById('success-modal');
-    const closeModalBtn = document.getElementById('close-modal-btn');
-    const submitBtn = document.getElementById('submit-btn');
-
-    form.addEventListener('submit', async function(e) {
-      e.preventDefault();
-      
-      submitBtn.disabled = true;
-      submitBtn.innerText = 'Submitting...';
-
-      const data = new FormData(form);
-
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-
-        if (response.ok) {
-          form.reset();
-          modal.classList.add('active');
-        } else {
-          alert("Oops! There was a problem submitting your form.");
-        }
-      } catch (error) {
-        alert("Oops! Network error, please try again.");
-      } finally {
-        submitBtn.disabled = false;
-        submitBtn.innerText = 'Request Beta Access';
-      }
-    });
-
-    closeModalBtn.addEventListener('click', function() {
-      modal.classList.remove('active');
     });
   </script>
 </body>
