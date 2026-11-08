@@ -327,4 +327,70 @@
       <div class="faq-item">
         <button class="faq-question">
           Is the app free to use?
-          <span class="
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Neumii offers essential daily task tracking for everyday routines alongside a 14-day free trial of Neumii Pro features upon download. It is 100% ad-free with zero pop-ups, harsh streaks, or sensory clutter.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          Which platforms are supported?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Neumii is currently available for Android devices via the Google Play Store. 
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How do I submit feedback or report a bug?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          We'd love to hear your thoughts! You can reach out directly via email at <a href="mailto:mariah@bymiraxx.com">mariah@bymiraxx.com</a> with feedback, feature requests, or bug reports.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question">
+          How is my data protected?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          We respect your privacy completely. We never sell, share, or monetize your personal data. Read our full <a href="privacy.html">Privacy Policy</a> for complete details.
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Mariah Taylor O/A By Miraxx. All rights reserved. | <a href="faq.html">FAQ</a> | <a href="privacy.html">Privacy Policy</a> | <a href="terms.html">Terms of Service</a></p>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileNav = document.getElementById('mobileNav');
+
+    menuToggle.addEventListener('click', () => {
+      mobileNav.classList.toggle('open');
+    });
+
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {
+      const questionBtn = item.querySelector('.faq-question');
+      questionBtn.addEventListener('click', () => {
+        const isOpen = item.classList.contains('active');
+        faqItems.forEach(i => i.classList.remove('active'));
+        if (!isOpen) {
+          item.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
